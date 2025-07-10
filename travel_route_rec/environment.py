@@ -168,56 +168,7 @@ class RandomAlg:
         self.num_arm = num_arm
     def take_action(self):
         return np.random.choice(self.num_arm)
-
-class FTL:
-    '''
-    Follow The Leader algorithm
-    '''
-    def __init__(self, num_arm, num_user):
-        self.num_arm = num_arm
-        self.num_user = num_user
-        self.past_record = [[] for _ in range (self.num_user)]
-    def take_action(self, uid):
-        action = 0
-        mean_value = np.mean(np.array(self.past_record[uid]))
-        if self.past_record[uid] == [] or mean_value == 0.5 or mean_value == None:
-            action = np.random.choice(self.num_arm)
-        else:
-            action = 1 if mean_value > 0.5 else 0
-        return action
-    def update(self, uid, action):
-        self.past_record[uid].append(action)
-
-class LinUCB_version_2:
-    '''
-    Another version of LinUCB. Not used in experiment now.
-    '''
-    def __init__(self, num_user, num_arm, user_context_dim, action_context_dim, lr):
-        self.num_arm = num_arm
-        self.num_user = num_user
-        self.user_context_dim = user_context_dim
-        self.action_context_dim = action_context_dim
-        self.lr = lr
-
-        self.A_personal = [np.identity(self.action_context_dim) for _ in range(self.num_user)]
-        self.b_personal = [np.zeros((self.action_context_dim, 1)) for _ in range(self.num_user)]
-
-    def take_action(self, uid, action_context):
-        pred = np.zeros(self.num_arm)
-        for action in range(self.num_arm):
-            theta = np.linalg.inv(self.A_personal[uid]) @ self.b_personal[uid]
-            pred[action] += (1) * (theta.T @ action_context[action] + self.lr * np.sqrt(action_context[action].T @ np.linalg.inv(self.A_personal[uid]) @ action_context[action]))
-        return np.argmax(pred)
-    
-    def update(self, uid, user_choice, action_context):
-        """
-        action_context: A*d array
-        """
-        for a in range(self.num_arm):
-            reward = int(a==user_choice)
-            self.A_personal[uid] += np.outer(action_context[a], action_context[a])
-            self.b_personal[uid] += reward * action_context[a].reshape(-1, 1)
-            
+      
 class LinUCB:
     def __init__(self, num_user, num_arm, user_context_dim_each, action_context_dim_each, lr):
         '''
@@ -361,12 +312,6 @@ class DynUCB:
                 np.array(self.b_personal)[self.labels==k, :], axis=0
             )
             self.theta_cluster[k] = np.linalg.inv(self.A_cluster[k]) @ self.b_cluster[k]
-    
-    def debug(self):
-        theta = np.array([np.linalg.inv(self.A_personal[uid]) @ self.b_personal[uid] for uid in range(self.num_user) ])
-        np.save("theta.npy",theta)
-        theta_0 = theta[self.labels==0]
-        np.save("theta_0.npy",theta_0)
 
 class Utility(nn.Module):
     def __init__(self, action_context_dim):

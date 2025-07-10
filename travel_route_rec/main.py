@@ -3,14 +3,13 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from environment import *
 import argparse
 import threading
 import xgboost as xgb
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--NUM_TEST", type=int, help="Number of tests to run")
+parser.add_argument("--NUM_TEST", type=int, help="Number of tests to run", default=5)
 parser.add_argument("--EXPERIMENT_NAME", type=str, help="Name of the experiment", default="default")
 parser.add_argument("--beta_scaler", type=int, help="Beta scaler value", default=1)
 parser.add_argument("--prob_noise", type=float, help="Probability of noise", default=0.1)
@@ -235,7 +234,6 @@ for test in range(NUM_TEST):
                 reward = 1-loss
                 dynUCB.update(j, user_contexts[R_arm], reward, action_contexts[R_arm])
                 regret += [regret[-1] + loss]
-        dynUCB.debug()
         DynUCB_regret.append(regret[:])
 
     if ORACLE_CLUSTER:
