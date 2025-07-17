@@ -35,6 +35,7 @@
 
 <section style="margin-bottom: 30px;">
   <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">The Nah Bandit</h2>
+
   <p style="text-align: justify;">
     In this paper, we address a key problem in recommendation systems: users can easily opt out of recommended options and revert to their baseline behavior. This phenomenon is common in real-world scenarios such as shopping and mobility recommendations. We name this problem the <strong>Nah Bandit</strong>, which lies between a typical bandit setup and supervised learning.
   </p>
@@ -62,18 +63,38 @@
       </tbody>
     </table>
   </div>
-  
+
+ <p style="text-align: justify;">
+    For instance, consider a customer shopping in a physical store—where all items are openly displayed in the showcases. A store clerk might recommend certain items to a customer, but the customer does not always purchase the recommended ones. The customer can choose any item in the showcases that he prefers, and the clerk can observe which items the customer eventually buys. 
+</p>
+
+  <table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="text-align: center; padding: 10px;">
+      <img src="readme_figures/yeah.jpg" style="max-width: 100%;">
+      <p>User goes 'yeah'</p>
+    </td>
+    <td style="text-align: center; padding: 10px;">
+      <img src="readme_figures/nah.jpg" style="max-width: 100%;">
+      <p>User goes 'nah'</p>
+    </td>
+</table>
+
+<section style="margin-bottom: 30px;">
+  <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">User Non-compliance Model</h2>
+
   <p style="text-align: justify;">
-    We propose a <strong>user non-compliance model</strong> to solve the Nah Bandit problem, which uses a linear function to parameterize the <strong>anchoring effect</strong> (user's dependence on the recommendation). Based on this model, we propose the <strong>Expert with Clustering (EWC)</strong> algorithm to handle the Nah Bandit problem.
+  We propose a <strong>user non-compliance model</strong> to address the Nah Bandit problem. This model extends the standard contextual bandit framework by introducing a recommendation-strength variable into the option context, which explicitly captures how prominently an item is recommended to the user. Using a linear parameterization, our approach simultaneously learns: (1) the user's inherent preferences and (2) their user's dependence on the recommendation. This approach reduces the bias in the learning process that might be introduced by the anchoring effect, thereby preventing the user non-compliance model from falling into sub-optimal recommendations. 
   </p>
 </section>
 
 <section style="margin-bottom: 30px;">
   <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">EWC Algorithm</h2>
+  Based on the user non-compliance model, we propose the <strong>Expert with Clustering (EWC)</strong> algorithm to handle the Nah Bandit problem. EWC includes offline training phase and online learning phase. In the offline training phase, a user non-compliance model learns user preference parameters based on option contexts and user choices. These preference parameters are then grouped into clusters, with the cluster centroids serving as experts. User contexts and their cluster labels are used to train a logistic regression model to predict the initial weights of the experts. In the online learning phase, EWC selects an expert for each recommendation. After observing the user's choice, EWC calculates the losses of each experts and updates their weights accordingly.
   <div style="text-align: center; margin: 25px 0;">
     <img src="readme_figures/overview_figure.png" alt="overview_figure" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <p style="font-style: italic; margin-top: 10px; color: #666;">
-      <b>Figure 1:</b> In the offline training phase, a user non-compliance model learns user preference parameters based on option contexts and user choices. These parameters are clustered, and centroids serve as experts. In the online phase, the system predicts cluster membership and dynamically updates expert weights via observed feedback.
+      <b>Figure 1:</b> An overview of the Expert with Clustering (EWC) algorithm for the Nah Bandit problem. 
     </p>
   </div>
 </section>
@@ -81,7 +102,7 @@
 <section style="margin-bottom: 30px;">
   <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Experimental Results</h2>
   <p style="text-align: justify;">
-    This repository includes experiments on <strong>travel route recommendation</strong> and <strong>restaurant recommendation</strong>. Results show that EWC outperforms both supervised learning and traditional contextual bandit approaches.
+    We tested EWC and baseline approaches on <strong>travel route recommendation</strong> and <strong>restaurant recommendation</strong>. Results show that EWC outperforms both supervised learning and traditional contextual bandit approaches.
   </p>
   
   <h3 style="color: #2c3e50; margin-top: 25px;">Travel Route Recommendation</h3>
@@ -110,7 +131,7 @@
   <h3 style="color: #2c3e50; margin-top: 40px;">Restaurant Recommendation</h3>
   
   <div style="text-align: center; margin: 20px 0;">
-    <img src="readme_figures/restaurant.png" style="max-width: 70%; height: auto; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="readme_figures/restaurant.png" style="max-width: 50%; height: auto; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <p style="font-style: italic; margin-top: 10px; color: #666;">
       <b>Figure 3:</b> Regret comparison on restaurant recommendation. EWC consistently outperforms all baselines across rounds.
     </p>
@@ -118,7 +139,7 @@
 </section>
 
 <section style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 40px;">
-  <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Bibtex</h2>
+  <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">BibTex</h2>
   <pre style="background-color: white; padding: 15px; border-radius: 4px; overflow-x: auto; font-family: monospace; border: 1px solid #ddd;">
 @misc{zhou2024nahbanditmodelinguser,
       title={The Nah Bandit: Modeling User Non-compliance in Recommendation Systems}, 
