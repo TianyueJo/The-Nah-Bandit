@@ -11,6 +11,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import ast
 
+''' 
+The number of options is not fixed in restaurant recommendation, so we provide an additional version of environment and algorithms to handle this.
+'''
+
 def softmax(x):
     e_x = np.exp(x - np.max(x))
     return e_x / e_x.sum(axis=0)
