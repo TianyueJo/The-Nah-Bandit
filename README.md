@@ -46,6 +46,11 @@ This repository includes experiments on **travel route recommendation** and **re
 
 **Figure 2**: Regret of Expert with Clustering (EWC, Ours) and other baselines (DYNUCB, LinUCB, the user non-compliance model, and XGBoost) on travel route recommendation data. The x-axis denotes decision rounds; the y-axis shows regret (lower is better). EWC consistently outperforms baselines under different user compliance levels (&beta;).
 
+<p align="center">
+  <img src="readme_figures/restaurant.png" width="300px">
+</p>
+
+**Figure 3**: Regret of Expert with Clustering (EWC, Ours) and other baselines (XGBoost, LinUCB, DYNUCB, and the user non-compliance model) on restaurant recommendation data. EWC achieves lower regret than all baselines across all decision rounds.
 
 ---
 
