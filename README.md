@@ -11,46 +11,10 @@ In this paper, we address a key problem in recommendation systems: users can eas
 | User is **not** influenced by recommendations | N/A          | Supervised Learning            |
 
 We propose a **user non-compliance model** to solve the Nah Bandit problem, which uses a linear function to parameterize the **anchoring effect** (user’s dependence on the recommendation). Based on this model, we propose the **Expert with Clustering (EWC)** algorithm to handle the Nah Bandit problem.
-
----
-
-## 🧠 EWC Overview
-
 <figure style="text-align: center;">
 <img src="readme_figures/overview_figure.png" alt="overview_figure" width="1000"/>
-<figcaption>Figure 1: In the offline training phase, a user non-compliance model learns user preference parameters based on option contexts and user choices. These preference parameters are then grouped into clusters, with the cluster centroids serving as experts. User contexts and their cluster labels are used to train a logistic regression model to predict the initial weights of the experts. In the online learning phase, EWC selects an expert for each recommendation. After observing the user's choice, EWC calculates the loss for each expert and updates their weights accordingly.</figcaption>
+<figcaption>Figure 1: An overview figure of Expert with Clustering (EWC) algorithm.</figcaption>
 </figure>
-
----
-
-## 📊 Experimental Results
-
-This repository includes experiments on **travel route recommendation** and **restaurant recommendation**. Experimental results show that EWC outperforms both supervised learning and traditional contextual bandit approaches.
-
-<table>
-  <tr>
-    <td align="center">
-      <img src="readme_figures/beta=0_comparison.png" width="330px"><br/>
-      <sub>&beta; = 0</sub>
-    </td>
-    <td align="center">
-      <img src="readme_figures/beta=1_comparison.png" width="330px"><br/>
-      <sub>&beta; = 1</sub>
-    </td>
-    <td align="center">
-      <img src="readme_figures/beta=10_comparison.png" width="330px"><br/>
-      <sub>&beta; = 10</sub>
-    </td>
-  </tr>
-</table>
-
-**Figure 2**: Regret of Expert with Clustering (EWC, Ours) and other baselines (DYNUCB, LinUCB, the user non-compliance model, and XGBoost) on travel route recommendation data. The x-axis denotes decision rounds; the y-axis shows regret (lower is better). EWC consistently outperforms baselines under different user compliance levels (&beta;).
-
-<p align="center">
-  <img src="readme_figures/restaurant.png" width="300px">
-</p>
-
-**Figure 3**: Regret of Expert with Clustering (EWC, Ours) and other baselines (XGBoost, LinUCB, DYNUCB, and the user non-compliance model) on restaurant recommendation data. EWC achieves lower regret than all baselines across all decision rounds.
 
 ---
 
@@ -122,5 +86,36 @@ python plot_result.py --EXPERIMENT_NAME ablation_study
 
 - Ensure all dependencies are installed (see `environment.yml` if available).
 - For questions or issues, feel free to open an Issue or contact the authors.
+
+---
+
+## 📊 Experimental Results
+
+This repository includes experiments on **travel route recommendation** and **restaurant recommendation**. Experimental results show that EWC outperforms both supervised learning and traditional contextual bandit approaches.
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="readme_figures/beta=0_comparison.png" width="330px"><br/>
+      <sub>&beta; = 0</sub>
+    </td>
+    <td align="center">
+      <img src="readme_figures/beta=1_comparison.png" width="330px"><br/>
+      <sub>&beta; = 1</sub>
+    </td>
+    <td align="center">
+      <img src="readme_figures/beta=10_comparison.png" width="330px"><br/>
+      <sub>&beta; = 10</sub>
+    </td>
+  </tr>
+</table>
+
+**Figure 2**: Regret of Expert with Clustering (EWC, Ours) and other baselines (DYNUCB, LinUCB, the user non-compliance model, and XGBoost) on travel route recommendation data. The x-axis denotes decision rounds; the y-axis shows regret (lower is better). EWC consistently outperforms baselines under different user compliance levels (&beta;).
+
+<p align="center">
+  <img src="readme_figures/restaurant.png" width="300px">
+</p>
+
+**Figure 3**: Regret of Expert with Clustering (EWC, Ours) and other baselines (XGBoost, LinUCB, DYNUCB, and the user non-compliance model) on restaurant recommendation data. EWC achieves lower regret than all baselines across all decision rounds.
 
 ---
