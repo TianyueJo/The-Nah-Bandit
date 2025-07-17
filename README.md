@@ -27,7 +27,7 @@ We propose a **user non-compliance model** to solve the Nah Bandit problem, whic
 
 This repository includes experiments on **travel route recommendation** and **restaurant recommendation**. Experimental results show that EWC outperforms both supervised learning and traditional contextual bandit approaches.
 
-<div align="center">
+<div>
   <figure style="display: inline-block; margin: 10px;">
     <img src="readme_figures/beta=0_comparison.png" width="200px">
     <figcaption style="text-align: center;">&beta; = 0</figcaption>
