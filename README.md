@@ -30,15 +30,15 @@ This repository includes experiments on **travel route recommendation** and **re
 <table>
   <tr>
     <td align="center">
-      <img src="readme_figures/beta=0_comparison.png" width="300px"><br/>
+      <img src="readme_figures/beta=0_comparison.png" width="330px"><br/>
       <sub>&beta; = 0</sub>
     </td>
     <td align="center">
-      <img src="readme_figures/beta=1_comparison.png" width="300px"><br/>
+      <img src="readme_figures/beta=1_comparison.png" width="330px"><br/>
       <sub>&beta; = 1</sub>
     </td>
     <td align="center">
-      <img src="readme_figures/beta=10_comparison.png" width="300px"><br/>
+      <img src="readme_figures/beta=10_comparison.png" width="330px"><br/>
       <sub>&beta; = 10</sub>
     </td>
   </tr>
