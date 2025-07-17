@@ -108,7 +108,7 @@
   <h3 style="color: #2c3e50; margin-top: 40px;">Restaurant Recommendation</h3>
   
   <div style="text-align: center; margin: 20px 0;">
-    <img src="readme_figures/restaurant.png" style="max-width: 50%; height: auto; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="readme_figures/restaurant.png" style="max-width: 70%; height: auto; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <p style="font-style: italic; margin-top: 10px; color: #666;">
       <b>Figure 3:</b> Regret comparison on restaurant recommendation. EWC consistently outperforms all baselines across rounds.
     </p>
