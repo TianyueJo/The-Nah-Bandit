@@ -86,20 +86,22 @@
   
   <h3 style="color: #2c3e50; margin-top: 25px;">Travel Route Recommendation</h3>
   
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <div style="flex: 1; min-width: 300px; text-align: center;">
-    <img src="readme_figures/beta=0_comparison.png" style="max-width: 100%;">
-    <p>β=0</p>
-  </div>
-  <div style="flex: 1; min-width: 300px; text-align: center;">
-    <img src="readme_figures/beta=1_comparison.png" style="max-width: 100%;">
-    <p>β=1</p>
-  </div>
-  <div style="flex: 1; min-width: 300px; text-align: center;">
-    <img src="readme_figures/beta=10_comparison.png" style="max-width: 100%;">
-    <p>β=10</p>
-  </div>
-</div>
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="text-align: center; padding: 10px;">
+      <img src="readme_figures/beta=0_comparison.png" style="max-width: 100%;">
+      <p>β=0</p>
+    </td>
+    <td style="text-align: center; padding: 10px;">
+      <img src="readme_figures/beta=0_comparison.png" style="max-width: 100%;">
+      <p>β=1</p>
+    </td>
+    <td style="text-align: center; padding: 10px;">
+      <img src="readme_figures/beta=0_comparison.png" style="max-width: 100%;">
+      <p>β=10</p>
+    </td>
+  </tr>
+</table>
   
   <p style="text-align: center; font-style: italic; color: #666; margin-top: -10px;">
     <b>Figure 2:</b> Regret of EWC (Ours) vs. DYNUCB, LinUCB, the user non-compliance model, and XGBoost on travel route data. Lower regret is better. Higher β implies higher user compliance.
