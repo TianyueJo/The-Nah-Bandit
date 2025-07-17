@@ -1,7 +1,7 @@
 # The Nah Bandit
 
 This is the codebase for our paper:  
-**["The Nah Bandit: Modeling User Non-compliance in Recommendation Systems"](https://arxiv.org/abs/2408.07897)**. This paper has been accepted by IEEE Transactions on Control of Network Systems.
+**["The Nah Bandit: Modeling User Non-compliance in Recommendation Systems"](https://arxiv.org/abs/2408.07897)** (IEEE Transactions on Control of Network Systems).
 
 In this paper, we address a key problem in recommendation systems: users can easily opt out of recommended options and revert to their baseline behavior. This phenomenon is common in real-world scenarios such as shopping and mobility recommendations. We name this problem the **Nah Bandit**, which lies between a typical bandit setup and supervised learning. The comparison is shown below:
 
