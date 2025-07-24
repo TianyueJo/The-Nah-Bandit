@@ -1,10 +1,16 @@
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
 <div align="center" style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; color: #333;">
 
 <h1 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 15px;">The Nah Bandit: Modeling User Non-compliance in Recommendation Systems</h1>
 
 <p style="font-size: 1.1em; margin-bottom: 25px;">
-  <strong>Tianyue Zhou, Jung-Hoon Cho, Cathy Wu</strong><br>
-  ShanghaiTech University, Massachusetts Institute of Technology<br>
+  <strong>Tianyue Zhou<sup>1,2</sup>, Jung-Hoon Cho<sup>2</sup>, Cathy Wu<sup>2</sup></strong><br>
+  ShanghaiTech University<sup>1</sup>, Massachusetts Institute of Technology<sup>2</sup><br>
   <em>IEEE Transactions on Control of Network Systems</em>
 </p>
 
