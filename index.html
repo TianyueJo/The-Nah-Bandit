@@ -164,6 +164,29 @@ To generalize beyond the surveyed participants, we applied a Bayesian inference 
   </div>
 </section>
 
+<section style="margin-bottom: 30px;">
+  <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">Theoretical Results</h2>
+  <h3 style="color: #2c3e50; margin-top: 25px;">Regret Bound of EWC</h3>
+  <p style="text-align: justify;">
+    Let \(N\) be the number of users, \(T\) be the number of rounds per user, and \(K\) be the number of clusters.
+    Let \(P\) be any distribution of user preference parameters \(\boldsymbol{\theta}_{i}\in\mathbb{R}^d\), with \(\boldsymbol{\mu} = \mathbb{E}_P[\boldsymbol{\theta}_{i}]\), \(\sigma^2 =\mathbb{E}_P[||\boldsymbol{\theta}_{i}-\boldsymbol{\mu}||^2]\), and finite Kurtosis. 
+    Let \(\{\mathbf{c}_{k}\}_{k\in [K]}\) be any set of centroids, \(k^*(i)\) be the optimal expert for user \(i\), and \(\mathcal{L}=\sum_{i=1}^N ||\mathbf{c}_{k^*(i)}-\boldsymbol{\theta}_{i}||^2\) be the total squared distance of clustering. 
+    If \(\mathbf{\hat{y}}(\cdot, \mathbf{X}_i)\) is Lipschitz continuous for all \(\mathbf{X}_i\) with Lipschitz constant \(L\), Frobenius distance, and dimension normalization, then with probability at least \(1-\delta\), the regret of EWC is bounded by:
+    $$
+    R_{\text{EWC}} \leq 2N\sqrt{T\log K}+\frac{1}{4}TL\left(\epsilon\sigma^2+(\epsilon+2)\mathbb{E}[\mathcal{L}]\right)
+    $$
+  </p>
+  <h3 style="color: #2c3e50; margin-top: 25px;">Interpretation</h3>
+  <p style="text-align: justify;">
+    The theorem above indicates that the regret bound of EWC consists of two components. 
+    1: \( 2N\sqrt{T\log K} \), reflects the regret incurred from choosing the expert to identify a user's cluster identity. 
+    2: \( \frac{1}{4}TL\left(\epsilon\sigma^2 + (\epsilon+2)\mathbb{E}[\mathcal{L}]\right) \), captures the bias introduced by approximating user preferences with cluster centroids. 
+    A lower clustering loss \( \mathcal{L} \) directly reduces this component, thereby lowering the overall regret.
+    The users’ compliance levels further influence the regret by affecting the Lipschitz constant \( L \), which characterizes how sensitively a user’s choices change in response to variations in their preference parameters. 
+  </p>
+
+</section>
+
 <section style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 40px;">
   <h2 style="color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 8px;">BibTex</h2>
   <pre style="background-color: white; padding: 15px; border-radius: 4px; overflow-x: auto; font-family: monospace; border: 1px solid #ddd;">
